@@ -1,5 +1,8 @@
 # SchoolProject
 
+https://medium.com/faun/host-angular-app-for-free-8a443d324cda
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## Development server
