@@ -1,6 +1,9 @@
 {
   "name": "school-project",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "deploy": "ng build --prod --base-href https://github.com/avinashjgtp10/addmission && angular-cli-ghpages --branch gh-pages",
     "ng": "ng",
