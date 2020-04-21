@@ -142,6 +142,7 @@ export class StudentRegistrationComponent implements OnInit {
       { name: "BUDDHISM " },
       { name: "JAINISM " },
       { name: "JUDAISM" },
+      { name: "SEBC" },
       { name: "ZOROASTRIANISM" },
       { name: "Other" }
     ];

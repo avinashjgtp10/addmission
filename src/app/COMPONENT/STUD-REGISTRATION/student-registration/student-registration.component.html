@@ -15,6 +15,20 @@
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                         <div class="form-group">
+                            <label>पाल्याचे नाव<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="studentname"
+                                placeholder="पाल्याचे नाव"
+                                [ngClass]="{ 'is-invalid': submitted && f.studentname.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.studentname">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('studentname').hasError(validation.type) && (formGroup.get('studentname').dirty || formGroup.get('studentname').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>           
+                        <div class="form-group">
                             <label>पालकाचे नाव<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="fathername"
                                 placeholder="पालकाचे नाव"
@@ -41,20 +55,7 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <div class="form-group">
-                            <label>पाल्याचे नाव<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="studentname"
-                                placeholder="पाल्याचे नाव"
-                                [ngClass]="{ 'is-invalid': submitted && f.studentname.errors?.invalid }">
-                        </div>
-                        <div class="validation-errors">
-                            <ng-container *ngFor="let validation of validation_messages.studentname">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('studentname').hasError(validation.type) && (formGroup.get('studentname').dirty || formGroup.get('studentname').touched)">
-                                    <span name="information-circle-outline"></span> {{ validation.message }}
-                                </div>
-                            </ng-container>
-                        </div>
+                        
                         <div class="form-group" id="radiocontrol">
                             <label id="Gender">Gender<p class="p12">*</p></label><br>
                             <div class="form-control">
@@ -193,7 +194,7 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>प्रवेशाचा प्रकार<p class="p12">*</p></label>
                             <select class="form-control" formControlName="Admissiontype" placeholder=" निवडा">
                                 <option value="">निवडा</option>
@@ -208,7 +209,7 @@
                                     </div>
                                 </ng-container>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>यापूर्वी इतर शाळेत शिक्षण घेत असल्यास इयत्ता व जुन्या शाळेचे नाव (यूडायस क्रमांक
                                 असल्यास )</label>
@@ -224,10 +225,10 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>कोणत्या इयत्तेत प्रवेश घ्यायचा आहे ?<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
-                            <select class="form-control" formControlName="standard" placeholder=" निवडा">
+                           <!-- <select class="form-control" formControlName="standard" placeholder=" निवडा">
                                 <option value="">निवडा</option>
                                 <option *ngFor="let stdList of standardList; let i= index" value="{{stdList.name}}"
                                     [selected]="i == 0">{{stdList.name}}</option>
@@ -240,7 +241,7 @@
                                     </div>
                                 </ng-container>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Trade<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
@@ -261,6 +262,20 @@
 
                         <div class="form-group">
                             <label>पालकांचा मो.नं.<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="Mobilenumber"
+                                placeholder="पालकांचा मो.नं."
+                                [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.Mobilenumber">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('Mobilenumber').hasError(validation.type) && (formGroup.get('Mobilenumber').dirty || formGroup.get('Mobilenumber').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>student मो.नं.<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
                                 placeholder="पालकांचा मो.नं."
                                 [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
