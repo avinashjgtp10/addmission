@@ -7,6 +7,10 @@ import { StudentRegistrationComponent } from './COMPONENT/STUD-REGISTRATION/stud
 import { BsDatepickerModule} from 'ngx-bootstrap/datepicker'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+
+import { CRUDAPIService } from "./services/crud-api.service" 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,13 +18,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [CRUDAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

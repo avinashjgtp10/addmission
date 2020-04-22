@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { CRUDAPIService} from "../../../services/crud-api.service"
 @Component({
   selector: 'app-student-registration',
   templateUrl: './student-registration.component.html',
@@ -12,6 +13,7 @@ export class StudentRegistrationComponent implements OnInit {
   submitted = false
   maxDate: Date;
   validation_messages = {
+
     'fathername': [
       { type: 'required', message: '*Father name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
@@ -23,6 +25,9 @@ export class StudentRegistrationComponent implements OnInit {
     'studentname': [
       { type: 'required', message: '*Student name is required' },
       { type: 'minlength', message: '*Student name must be 3 character' }
+    ], 'taluka': [
+      { type: 'required', message: '*taluka is required' },
+      { type: 'minlength', message: '*taluka name must be 3 character' }
     ],
     'Gender': [
       { type: 'required', message: '*Please select purchase type' }
@@ -50,24 +55,26 @@ export class StudentRegistrationComponent implements OnInit {
       // { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'Adharno': [
-      { type: 'required', message: '*Mobile Number is Required' },
-      { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
-      { type: 'pattern', message: '*Enter valid mobile number' },
-      { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
-    ],
-    'Admissiontype': [
-      { type: 'required', message: '*Please select admission type' },
+      { type: 'required', message: '*aadhar Number is Required' },
+      { type: 'maxlength', message: '*aadhar number maximum length should be only 10 number' },
+      { type: 'pattern', message: '*Enter valid adhar number' },
+      { type: 'minlength', message: '*adhar number minumum lenght 16 number' }
     ],
     'UDISno': [
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
-    'standard': [
-      { type: 'required', message: '*Please select standard type' },
-    ],
+    // 'standard': [
+    //   { type: 'required', message: '*Please select standard type' },
+    // ],
     'trade': [
       { type: 'required', message: '*Please select trade' },
     ],
     'Mobilenumber': [
+      { type: 'required', message: '*Mobile Number is Required' },
+      { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
+      { type: 'pattern', message: '*Enter valid mobile number' },
+      { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
+    ], 'StuentMobilenumber': [
       { type: 'required', message: '*Mobile Number is Required' },
       { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
       { type: 'pattern', message: '*Enter valid mobile number' },
@@ -91,7 +98,9 @@ export class StudentRegistrationComponent implements OnInit {
   nationality: { name: string; }[];
   trade: { name: string; }[];
   Religion: { name: string; }[];
+
   constructor(public fb: FormBuilder,
+    public rest:CRUDAPIService,
     public dpconfig: BsDatepickerConfig) {
     this.dpconfig.dateInputFormat = 'DD-MM-YYYY';
     this.dpconfig.isAnimated = true;
@@ -131,6 +140,7 @@ export class StudentRegistrationComponent implements OnInit {
       { name: "Fitter" },
       { name: "Diesel Machanical" },
       { name: "Welder" },
+      { name: "Solar Technician" },
       { name: "Electrician" },
       { name: "Other" }
     ];
@@ -149,6 +159,10 @@ export class StudentRegistrationComponent implements OnInit {
   }
   ngOnInit(): void {
     this.formGroup = this.fb.group({
+      taluka: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3)
+      ])],
       fathername: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3)
@@ -186,23 +200,27 @@ export class StudentRegistrationComponent implements OnInit {
       ])],
       Adharno: ['', Validators.compose([
         // Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(16),
         Validators.pattern('^[0-9]{10}$'),
-        Validators.minLength(10)
+        Validators.minLength(16)
       ])],
-      Admissiontype: ['', Validators.compose([
-        Validators.required
-      ])],
+      
       UDISno: ['', Validators.compose([
         Validators.minLength(3)
       ])],
-      standard: ['', Validators.compose([
-        Validators.required
-      ])],
+      // standard: ['', Validators.compose([
+      //   Validators.required
+      // ])],
       trade: ['', Validators.compose([
         Validators.required
       ])],
       Mobilenumber: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(10),
+        Validators.pattern('^[0-9]{10}$'),
+        Validators.minLength(10)
+      ])],
+      StuentMobilenumber: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(10),
         Validators.pattern('^[0-9]{10}$'),
@@ -227,9 +245,20 @@ export class StudentRegistrationComponent implements OnInit {
     return this.formGroup.controls;
   }
   onSubmit() {
+    console.log(this.formGroup)
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
+    this.rest.saveAdmissionForm(this.formGroup.value).subscribe((result:any)=>{
+      
+      if(result.status === "success"){
+        alert("success")
+      }
+      if(result.status === "error"){
+        alert(result.message)
+      }
+
+    })
   }
 }

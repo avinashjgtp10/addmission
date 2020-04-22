@@ -7,10 +7,10 @@
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3>विठ्ठलराव थोरात इंग्लिश मेडिअम स्कूल भिगवण,
-                        ता.इंदापूर जि.पुणे मो-९८९०४३६४९०</h3>
-                    <p id="heading3">पहिली ते सातवीसाठी प्रवेश अर्ज, सन-२०२०/ २०२१ </p>
-                    <p id="note">* Required</p>
+                    <h3>विठ्ठलराव थोरात औद्योगिक प्रशिक्षण संस्थान भिगवण,
+                        ता.इंदापूर जि.पुणे +91-9766066830</h3>
+                    <p id="heading3"> ITI(आयटीआय) अर्ज, सन-२०२०/ २०२१ </p>
+                    <p id="note">* आवश्यक</p>
                 </div>
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
@@ -115,6 +115,23 @@
                             </ng-container>
                         </div>
                         <div class="form-group">
+                            <label>तालुका<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="taluka" placeholder="तालुका"
+                                [ngClass]="{ 'is-invalid': submitted && f.taluka.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.taluka">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('taluka').hasError(validation.type) && (formGroup.get('taluka').dirty || formGroup.get('taluka').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        
+
+
+
+                        <div class="form-group">
                             <label>राष्ट्रीयत्व<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
                             <select class="form-control" formControlName="nationality" placeholder=" निवडा">
@@ -194,22 +211,7 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <!-- <div class="form-group">
-                            <label>प्रवेशाचा प्रकार<p class="p12">*</p></label>
-                            <select class="form-control" formControlName="Admissiontype" placeholder=" निवडा">
-                                <option value="">निवडा</option>
-                                <option *ngFor="let list of classList; let i= index" value="{{list.name}}"
-                                    [selected]="i == 0">{{list.name}}</option>
-                            </select>
-                            <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.Admissiontype">
-                                    <div class="error-message text-danger"
-                                        *ngIf="formGroup.get('Admissiontype').hasError(validation.type) && (formGroup.get('Admissiontype').dirty || formGroup.get('Admissiontype').touched)">
-                                        <span name="information-circle-outline"></span> {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div>
-                        </div> -->
+                     
                         <div class="form-group">
                             <label>यापूर्वी इतर शाळेत शिक्षण घेत असल्यास इयत्ता व जुन्या शाळेचे नाव (यूडायस क्रमांक
                                 असल्यास )</label>
@@ -275,15 +277,15 @@
                             </ng-container>
                         </div>
                         <div class="form-group">
-                            <label>student मो.नं.<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Mobilenumber"
-                                placeholder="पालकांचा मो.नं."
-                                [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
+                            <label>विद्यार्थाचा मो.नं.<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="StuentMobilenumber"
+                                placeholder="विद्यार्थाचा मो.नं."
+                                [ngClass]="{ 'is-invalid': submitted && f.StuentMobilenumber.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
-                            <ng-container *ngFor="let validation of validation_messages.Mobilenumber">
+                            <ng-container *ngFor="let validation of validation_messages.StuentMobilenumber">
                                 <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Mobilenumber').hasError(validation.type) && (formGroup.get('Mobilenumber').dirty || formGroup.get('Mobilenumber').touched)">
+                                    *ngIf="formGroup.get('StuentMobilenumber').hasError(validation.type) && (formGroup.get('StuentMobilenumber').dirty || formGroup.get('StuentMobilenumber').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
@@ -333,7 +335,7 @@
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" id="Registerbutton"
-                                [disabled]="!formGroup.valid">
+                                [disabled]="!formGroup.valid" >
                                 Submit
                             </button>
                         </div>
