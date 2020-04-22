@@ -56,9 +56,9 @@ export class StudentRegistrationComponent implements OnInit {
     ],
     'Adharno': [
       { type: 'required', message: '*aadhar Number is Required' },
-      { type: 'maxlength', message: '*aadhar number maximum length should be only 10 number' },
+      { type: 'maxlength', message: '*aadhar number maximum length should be only 12 number' },
       { type: 'pattern', message: '*Enter valid adhar number' },
-      { type: 'minlength', message: '*adhar number minumum lenght 16 number' }
+      { type: 'minlength', message: '*adhar number minumum lenght 12 number' }
     ],
     'UDISno': [
       { type: 'minlength', message: '*Name must be 3 character' }
@@ -200,9 +200,9 @@ export class StudentRegistrationComponent implements OnInit {
       ])],
       Adharno: ['', Validators.compose([
         // Validators.required,
-        Validators.maxLength(16),
+        Validators.maxLength(12),
         Validators.pattern('^[0-9]{10}$'),
-        Validators.minLength(16)
+        Validators.minLength(12)
       ])],
       
       UDISno: ['', Validators.compose([
