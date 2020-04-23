@@ -10,6 +10,7 @@ import { CRUDAPIService} from "../../../services/crud-api.service"
 export class StudentRegistrationComponent implements OnInit {
   arr: FormArray
   formGroup: FormGroup
+  public loading = false;
   submitted = false
   maxDate: Date;
   validation_messages = {
@@ -104,6 +105,7 @@ export class StudentRegistrationComponent implements OnInit {
     public dpconfig: BsDatepickerConfig) {
     this.dpconfig.dateInputFormat = 'DD-MM-YYYY';
     this.dpconfig.isAnimated = true;
+
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.classList = [
@@ -248,16 +250,19 @@ export class StudentRegistrationComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.formGroup)
+    this.loading = true;
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
     this.rest.saveAdmissionForm(this.formGroup.value).subscribe((result:any)=>{
-      
       if(result.status === "success"){
+        this.loading = false;
+        this.formGroup.reset()
         alert("Admission form is submitted successfully!")
       }
       if(result.status === "error"){
+        this.loading = false;
         alert(result.message)
       }
 

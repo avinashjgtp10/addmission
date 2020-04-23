@@ -19,7 +19,7 @@
     </div>
 </header> -->
 
-
+<ngx-loading [show]="loading"  [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }" ></ngx-loading>  
 
 <div class="container">
     <div class="row">
@@ -79,19 +79,19 @@
                         </div>
                         
                         <div class="form-group" id="radiocontrol">
-                            <label id="Gender">Gender<p class="p12">*</p></label><br>
+                            <label id="Gender">लिंग<p class="p12">*</p></label><br>
                             <div class="form-control">
                               <div class="custom-control custom-radio custom-control-inline">
                                     <input id="Male" type="radio" class="custom-control-input "
-                                        name="Gender" value="Male"  fromControlName="Gender" />
+                                        name="Gender" value="पुरूष"  fromControlName="Gender" />
                                     <label id="MaleGender" class="custom-control-label"
-                                        for="Male">Male</label>
+                                        for="Male">पुरूष</label>
                                 </div>                                
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input id="Female" type="radio" class="custom-control-input "
-                                        name="Gender" value="Female" fromControlName="Gender"  />
+                                        name="Gender" value="स्त्री" fromControlName="Gender"  />
                                     <label id="FemaleGender" class="custom-control-label"
-                                        for="Female">Female</label>
+                                        for="Female">स्त्री</label>
                                 </div>
                             </div>
                             <div [ngClass]="{ 'is-invalid': submitted && f.Gender.errors?.invalid }">
@@ -369,4 +369,5 @@
             </div>
         </div>
     </div>
+
 </div>

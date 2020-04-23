@@ -8,7 +8,7 @@ import { BsDatepickerModule} from 'ngx-bootstrap/datepicker'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-
+import { NgxLoadingModule } from 'ngx-loading';
 import { CRUDAPIService } from "./services/crud-api.service" 
 
 @NgModule({
@@ -20,6 +20,7 @@ import { CRUDAPIService } from "./services/crud-api.service"
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxLoadingModule.forRoot({}),
     BsDatepickerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
