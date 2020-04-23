@@ -2,6 +2,12 @@
 h3{
     text-align: center;
 }
+.contact {
+  /* width: 100%; */
+  margin: auto;
+  width: 60%;
+  /* margin: auto; */
+}
 .card-body{
     background-color: whitesmoke;
 }
@@ -44,6 +50,7 @@ select.ng-touched.ng-invalid {
  #note{
    color: red;
    text-align: center;
+   font-weight: bold;
    margin: 0px;
    margin-top: 0px;
  }
