@@ -30,11 +30,11 @@ export class StudentRegistrationComponent implements OnInit {
       { type: 'minlength', message: '*taluka name must be 3 character' }
     ],
     'Gender': [
-      { type: 'required', message: '*Please select purchase type' }
+      { type: 'required', message: '*Please select gender type' }
     ],
     'DateOfBirth': [
       {
-        type: 'required', message: '*Please select  birth date'
+        type: 'required', message: '*Please select birth date'
       }
     ],
     'Address': [
@@ -48,24 +48,22 @@ export class StudentRegistrationComponent implements OnInit {
     ],
     'caste': [
       { type: 'required', message: '*Caste is required' },
-      { type: 'minlength', message: '*Name must be 3 character' }
+     
     ],
     'mothertoung': [
       { type: 'required', message: '*Select mothertoung language' }
       // { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'Adharno': [
-      { type: 'required', message: '*aadhar Number is Required' },
-      { type: 'maxlength', message: '*aadhar number maximum length should be only 12 number' },
+      { type: 'required', message: '*Aadhar Number is Required' },
+      { type: 'maxlength', message: '*Aadhar number maximum length should be only 12 number' },
       { type: 'pattern', message: '*Enter valid adhar number' },
-      { type: 'minlength', message: '*adhar number minumum lenght 12 number' }
+      { type: 'minlength', message: '*Adhar number minumum lenght 12 number' }
     ],
     'UDISno': [
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
-    // 'standard': [
-    //   { type: 'required', message: '*Please select standard type' },
-    // ],
+
     'trade': [
       { type: 'required', message: '*Please select trade' },
     ],
@@ -89,6 +87,7 @@ export class StudentRegistrationComponent implements OnInit {
       { type: 'minlength', message: '*Father occupation must be 3 character' }
     ],
     'Anualincome': [
+      { type: 'pattern', message: '*Enter valid income number' },
       { type: 'required', message: '*Father Anual income is required' }
     ]
   }
@@ -98,6 +97,7 @@ export class StudentRegistrationComponent implements OnInit {
   nationality: { name: string; }[];
   trade: { name: string; }[];
   Religion: { name: string; }[];
+  caste: { name: string; }[];
 
   constructor(public fb: FormBuilder,
     public rest:CRUDAPIService,
@@ -138,23 +138,25 @@ export class StudentRegistrationComponent implements OnInit {
     ];
     this.trade = [
       { name: "Fitter" },
-      { name: "Diesel Machanical" },
+      { name: "Mechanic Diesel" },
       { name: "Welder" },
       { name: "Solar Technician" },
       { name: "Electrician" },
       { name: "Other" }
     ];
     this.Religion = [
-      { name: "HINDUISM " },
-      { name: "ISLAM " },
-      { name: "CHRISTIANITY" },
-      { name: "SIKHISM" },
-      { name: "BUDDHISM " },
-      { name: "JAINISM " },
-      { name: "JUDAISM" },
-      { name: "SEBC" },
-      { name: "ZOROASTRIANISM" },
-      { name: "Other" }
+      { name: "हिंदू " },
+      { name: "इस्लाम" },
+      { name: "इतर" }
+    ];
+    this.caste = [
+      { name: "NT " },
+      { name: "SC" },
+      { name: "ST " },
+      { name: "OBC" },
+      { name: "SEBC " },
+      { name: "Maratha" },
+      { name: "Other " }
     ];
   }
   ngOnInit(): void {
@@ -191,8 +193,7 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.required
       ])],
       caste: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(3)
+        Validators.required
       ])],
       mothertoung: ['', Validators.compose([
         Validators.required,
@@ -201,7 +202,7 @@ export class StudentRegistrationComponent implements OnInit {
       Adharno: ['', Validators.compose([
         // Validators.required,
         Validators.maxLength(12),
-        Validators.pattern('^[0-9]{10}$'),
+        Validators.pattern('^[0-9]{12}$'),
         Validators.minLength(12)
       ])],
       
@@ -235,6 +236,7 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.minLength(3)
       ])],
       Anualincome: ['', Validators.compose([
+        Validators.pattern("[0-9]*$"),
         Validators.required
       ])],
 
@@ -253,7 +255,7 @@ export class StudentRegistrationComponent implements OnInit {
     this.rest.saveAdmissionForm(this.formGroup.value).subscribe((result:any)=>{
       
       if(result.status === "success"){
-        alert("success")
+        alert("Admission form is submitted successfully!")
       }
       if(result.status === "error"){
         alert(result.message)

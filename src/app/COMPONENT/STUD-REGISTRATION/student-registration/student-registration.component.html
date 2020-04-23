@@ -2,14 +2,36 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
     <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner> -->
+<!-- <header>
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-3">
+                    <div class="logo">
+                            <img src="../../../../assets/img/logo.png">
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-3">
+                    <span>विठ्ठलराव थोरात औद्योगिक प्रशिक्षण संस्था. भिगवण</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header> -->
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3>विठ्ठलराव थोरात औद्योगिक प्रशिक्षण संस्थान भिगवण,
-                        ता.इंदापूर जि.पुणे +91-9766066830</h3>
-                    <p id="heading3"> ITI(आयटीआय) अर्ज, सन-२०२०/ २०२१ </p>
+                    <h3>
+                        <img src="../../../../assets/img/logo.png" alt="..." > विठ्ठलराव थोरात औद्योगिक प्रशिक्षण संस्था. भिगवण,
+                        ता.इंदापूर जि.पुणे </h3>
+                    <h4 ><b>Phone:</b> 9766066830/02118-246074 </h4>
+                    <h4><b>EmailId:</b>vtitibhigwan@yahoo.com</h4>
+                    <p id="heading3"> ITI(आयटीआय) प्रवेश अर्ज, सन-२०२०/ २०२१ </p>
                     <p id="note">* आवश्यक</p>
                 </div>
                 <div class="card-body">
@@ -128,9 +150,6 @@
                             </ng-container>
                         </div>
                         
-
-
-
                         <div class="form-group">
                             <label>राष्ट्रीयत्व<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
@@ -168,9 +187,15 @@
                         </div>
                         <div class="form-group">
                             <label>पोटजात<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="caste"
+                            <!-- <input type="text" class="form-control" formControlName="caste"
                                 placeholder="पोटजात"
-                                [ngClass]="{ 'is-invalid': submitted && f.caste.errors?.invalid }">
+                                [ngClass]="{ 'is-invalid': submitted && f.caste.errors?.invalid }"> -->
+                                <select class="form-control" formControlName="caste" placeholder=" निवडा">
+                                    <option value="">निवडा</option>
+                                    <option *ngFor="let cast of caste; let i= index" value="{{cast.name}}"
+                                        [selected]="i == 0">{{cast.name}}</option>
+                                </select>
+
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.caste">
