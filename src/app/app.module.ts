@@ -13,7 +13,6 @@ import { CRUDAPIService } from "./services/crud-api.service";
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component' 
-import { DataTablesModule } from 'angular-datatables';
 import { DateConvertPipe } from './pipe/date-convert.pipe';
 
 
@@ -28,7 +27,6 @@ import { DateConvertPipe } from './pipe/date-convert.pipe';
   ],
   imports: [
     BrowserModule,
-    DataTablesModule,
     HttpClientModule,
     AppRoutingModule,
     NgxLoadingModule.forRoot({}),
