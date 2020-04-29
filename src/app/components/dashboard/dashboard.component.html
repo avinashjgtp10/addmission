@@ -1,0 +1,53 @@
+<table class="table table-bordered row-border hover">
+    <thead>
+        <tr>
+            <th>नाव</th>
+            <th>वडीलांचे नावं</th>
+            <th> आईचे नाव</th>
+            <th> लिंग</th>
+            <th>जन्म तारीख</th>
+            <th>आधार क्रमांक</th>
+            <th>पत्ता</th>
+            <th>ईमेल</th>
+            <th>मोबाइल नंबर</th>
+            <th>विद्यार्थी मोबाईल क्रमांक</th>
+            <th>धर्म</th>
+            <th>जात</th>
+            <th> वार्षिक उत्पन्न</th>
+            <th>  कौटुंबिक व्यवसाय</th>
+            
+            <th>राष्ट्रीयत्व</th>
+            <th>मातृभाषा</th>
+          
+            <th>UDISno</th>
+            <th>तालुका</th>
+            <th>trade</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of this.studentData">
+            <td>{{student.studentname}}</td>
+            <td>{{student.fathername}}</td>
+            <td>{{student.mothername}}</td>
+            <td>{{student.Gender}}</td>
+            <td>{{student.DateOfBirth | dateConvert}}</td>
+            <td>{{student.Adharno}}</td>
+            <td>{{student.Address}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.Mobilenumber}}</td>
+            <td>{{student.StuentMobilenumber}}</td>
+            <td>{{student.Religion}}</td>
+            <td>{{student.caste}}</td>
+            <td>{{student.Anualincome}}</td>
+            <td>{{student.fatheroccupation}}</td>
+            <td>{{student.nationality}}</td>
+            <td>{{student.mothertoung}}</td>
+            <td>{{student.UDISno}}</td>
+            <td>{{student.taluka}}</td>
+            <td>{{student.trade}}</td>
+          
+        </tr>
+    </tbody>
+</table>

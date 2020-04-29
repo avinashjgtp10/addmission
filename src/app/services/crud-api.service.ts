@@ -12,4 +12,10 @@ export class CRUDAPIService {
    // return this.http.post("https://localhost:3000/users/createUser",data)
     return this.http.post("https://iti-backend.herokuapp.com/users/createUser",data)
   }
+  userLogin(loginDetails:any){
+    return this.http.post("https://iti-backend.herokuapp.com/users/login",loginDetails)
+  }
+  getStudentData(){
+    return this.http.get("https://iti-backend.herokuapp.com/users/getStudentData")
+  }
 }

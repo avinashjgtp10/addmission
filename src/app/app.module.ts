@@ -9,15 +9,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NgxLoadingModule } from 'ngx-loading';
-import { CRUDAPIService } from "./services/crud-api.service" 
+import { CRUDAPIService } from "./services/crud-api.service";
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component' 
+import { DataTablesModule } from 'angular-datatables';
+import { DateConvertPipe } from './pipe/date-convert.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentRegistrationComponent
+    StudentRegistrationComponent,
+    HomeComponent,
+    LoginComponent,
+    DashboardComponent,
+    DateConvertPipe
   ],
   imports: [
     BrowserModule,
+    DataTablesModule,
     HttpClientModule,
     AppRoutingModule,
     NgxLoadingModule.forRoot({}),
