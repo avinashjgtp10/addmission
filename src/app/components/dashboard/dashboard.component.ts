@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router"
 import { from } from 'rxjs';
-import { DataTablesModule } from 'angular-datatables';
+
 import { CRUDAPIService } from "../../services/crud-api.service"
 
 
